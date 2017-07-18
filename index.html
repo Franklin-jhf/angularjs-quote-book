@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<title></title>
+	<script defer src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+	<script defer type="text/javascript" src="app.js"></script>
+	<script defer type="text/javascript" src="mainCtrl.js"></script>
+	<script defer type="text/javascript" src="mainSrvc.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body ng-controller="mainCtrl">
+	<strong>Add a new quote</strong>
+	<div>
+		Quote: <input type="text" ng-model="addQuote"><br>
+		Author: <input type="text" ng-model="addAuthor">
+		<button ng-click="addData({text: addQuote, author: addAuthor})">Add Quote</button>
+	</div>
+	Filter Quotes: <input type="text" ng-model="filterQuotes">
+	<ul>
+		<li ng-repeat="quote in quotes | orderBy: filterQuotes">
+			<blockquote>{{ quote.text }} ~ {{ quote.author }}</blockquote> 
+			<button ng-click="removeData(quote.text)">Remove</button>
+		</li>
+	</ul>
+
+</body>
+</html>
